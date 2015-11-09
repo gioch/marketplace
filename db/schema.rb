@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20151109134221) do
 
-  create_table "listings", force: :cascade do |t|
+  create_table "products", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.decimal  "price"
