@@ -1,0 +1,16 @@
+<%= render 'partials/products/categories', categories: @categories %>
+
+<hr>
+
+<div class="center">
+  <div class="row">
+    <% @products.each do |product| %>
+
+      <%= render 'partials/products/product', product: product, show_buttons: true %>
+
+    <% end %>
+  </div>
+</div>
+
+<!-- Implemented "Tell, Don't ask" pattern using helper file  -->
+<%= show_product_create_button %>

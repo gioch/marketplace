@@ -1,0 +1,2 @@
+class ProductFacade
+end

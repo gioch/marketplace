@@ -1,0 +1,26 @@
+<div class="col-md-3">
+  <div class="thumbnail">
+
+    <!-- 'Law of Demeter' Pattern here. 'product.image_url' instead of 'product.image.url' -->
+    <%= link_to image_tag(product.image_url), product %>
+
+    <div class="caption">
+      <h3> <%= product.name %> </h3>
+
+      <!-- 'Law of Demeter' Pattern here. -->
+      <p> <%= product.category_name %> </p>
+
+      <p> <%= number_to_currency(product.price) %> </p>
+
+      <!-- 'Law of Demeter' Pattern here. -->
+      <p> By: <%= product.user_name %> </p>
+
+      <% if show_buttons %>
+        <!-- Implemented "Tell, Don't ask" pattern using helper file  -->
+        <%= show_product_edit_button(product) %>
+        <%= show_product_delete_button(product) %>
+      <% end %>
+      <br>
+    </div>
+  </div>
+</div>

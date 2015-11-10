@@ -20,7 +20,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass'
 
-gem "paperclip", "~> 3.0"
+gem 'paperclip', github: 'thoughtbot/paperclip'
+
+gem 'devise'
+
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
