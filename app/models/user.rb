@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
     self.recipient.blank?
   end
 
-  def set_stripe_recipient_id(recipient_id)
+  def set_recipient_id(recipient_id)
     self.recipient = recipient_id
     save
   end

@@ -37,8 +37,7 @@ class OrdersController < ApplicationController
     end
 
     def process_payment(price)
-      stripe_client = StripeClient.new(params[:stripeToken])
-      stripe_client.charge(price)
+      CreditCardService({ token: params[:stripeToken], price: price }).charge
     end
 
     def create_order

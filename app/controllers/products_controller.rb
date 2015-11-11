@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
   def create
     if @product = Product.new(product_params)
       current_user.products << @product
-      set_users_recipient_id(current_user)
+      set_users_recipient(current_user)
       redirect_to @product, notice: 'Product was successfully created.'
     else
       render :new
@@ -47,12 +47,10 @@ class ProductsController < ApplicationController
   end
 
   private
-    def set_users_recipient_id(user)
-      ## violated '5 line controller' pattern, refactoring needed
+    def set_users_recipient(user)
       if user.recipient_blank?
-        stripe_client = StripeClient.new(params[:stripeToken])
-        recipient = stripe_client.create_recipient(user.name)
-        user.set_stripe_recipient_id(recipient.id) unless recipient.nil?
+        recipient = CreditCardService.new({ name: user.name, token: params[:stripeToken] }).create_recipient
+        user.set_recipient_id(recipient.id) unless recipient.nil?
       end
     end
 
