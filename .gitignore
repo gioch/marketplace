@@ -13,3 +13,6 @@ doc/
 *.swp
 *~
 .DS_Store
+
+# Paperclip files
+/public/system/
