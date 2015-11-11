@@ -12,7 +12,6 @@ class CreditCardService
       external_customer_service.create(customer_attributes)
     rescue => e
       @errors = e.message
-      nil
     end
   end
 
@@ -21,7 +20,6 @@ class CreditCardService
       external_charge_service.create(charge_attributes)
     rescue => e
       @errors = e.message
-      nil
     end
   end
 
