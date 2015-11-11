@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
     end
 
     def process_payment(price)
-      CreditCardService({ token: params[:stripeToken], price: price }).charge
+      CreditCard({ token: params[:stripeToken], price: price }).charge
     end
 
     def create_order

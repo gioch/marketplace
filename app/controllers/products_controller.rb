@@ -49,9 +49,13 @@ class ProductsController < ApplicationController
   private
     def set_users_recipient(user)
       if user.recipient_blank?
-        recipient = CreditCardService.new({ name: user.name, token: params[:stripeToken] }).create_recipient
+        recipient = create_credit_card_recipient(user)
         user.set_recipient_id(recipient.id) unless recipient.nil?
       end
+    end
+
+    def create_credit_card_recipient(user)
+      recipient = CreditCard.new({ name: user.name, token: params[:stripeToken] }).create_recipient
     end
 
     def set_product

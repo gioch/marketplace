@@ -1,4 +1,4 @@
-class CreditCardService
+class CreditCard
   def initialize(params)
     @token = params[:token]
     @customer_name = params[:name]
